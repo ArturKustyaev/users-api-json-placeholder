@@ -1,0 +1,34 @@
+.user-profile {
+    max-width: 474px;
+    padding: 13px 36px;
+    width: 100%;
+
+    &__top {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 11px;
+    }
+
+    &-form {
+        &__inputs {
+            border-radius: 8px;
+            border: 1px solid #D8D8D8;
+            margin-bottom: 10px;
+            padding: 20px 6px 19px 12px;
+            max-width: 100%;
+        }
+
+        &__input {
+
+            &:not(:last-child) {
+                margin-bottom: 15px;
+            }
+        }
+
+        &__actions {
+            text-align: right;
+        }
+    }
+
+}

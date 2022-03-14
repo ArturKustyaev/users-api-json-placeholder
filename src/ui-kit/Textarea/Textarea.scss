@@ -1,0 +1,45 @@
+@import 'ui-kit/styles';
+
+.ui-textarea-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-width: inherit;
+}
+
+.ui-textarea {
+    border-radius: 5px;
+    border: 1px solid $color-input-border;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    outline: none;
+    padding: 5px 10px;
+    transition: background-color 0.2s;
+   max-width: inherit;
+
+
+    &::placeholder {
+        color: #BFBFBF;
+        transition: color 0.2s ease-out;
+    }
+
+    &:focus {
+        background-color: #C5E4F9;
+        border: 1px solid #1390E5;
+    }
+
+    &::placeholder {
+        color: #1390E5;
+    }
+
+    &__label {
+        color: black;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 3px;
+    }
+}
