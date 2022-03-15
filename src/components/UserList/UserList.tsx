@@ -1,7 +1,6 @@
 import { userApi } from 'api/userApi'
 import { AxiosResponse } from 'axios'
-import UserItem from 'components/UserItem'
-import { IUser } from 'components/UserItem/types'
+import { IUser, UserItem } from 'components'
 import { FC, useEffect, useState } from 'react'
 import { Loader } from 'ui-kit'
 import './UserList.scss'

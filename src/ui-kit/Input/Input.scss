@@ -1,11 +1,5 @@
 @import 'ui-kit/styles';
 
-.ui-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
 .ui-input {
     border-radius: 5px;
     border: 1px solid $color-input-border;
@@ -14,13 +8,9 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
-    line-height: inherit;
-    max-width: 210px;
     outline: none;
     padding: 5px 10px;
     transition: background-color 0.2s;
-    width: 100%;
-
 
     &::placeholder {
         color: #BFBFBF;
@@ -36,11 +26,12 @@
         color: #1390E5;
     }
 
-    &__label {
-        color: black;
-        display: inline-block;
-        font-size: 12px;
-        line-height: 14px;
-        margin-bottom: 3px;
+    &--error {
+        border: 1px solid red;
+
+        &:focus {
+            background-color: lighten(red, 45%);
+            border: 1px solid red;
+        }
     }
 }

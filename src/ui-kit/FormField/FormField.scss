@@ -1,0 +1,20 @@
+.ui-form-field {
+
+    &__label {
+        color: black;
+        display: inline-block;
+        font-size: 12px;
+        line-height: 14px;
+        margin-bottom: 3px;
+    }
+
+    &__error-message {
+        margin-top: 3px;
+        color: red;
+        font-size: 10px;
+    }
+
+    &--focused {
+        color: green;
+    }
+}

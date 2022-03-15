@@ -1,7 +1,7 @@
 import classNames from 'classnames'
+import { IUser } from 'components'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { IUser } from './types'
 import './UserItem.scss'
 
 interface IUserItemProps {

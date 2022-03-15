@@ -1,6 +1,9 @@
 .user-page{
+    height: 100%;
+    min-height: inherit;
 
     &__inner{
         display: flex;
+        min-height: inherit;
     }
 }

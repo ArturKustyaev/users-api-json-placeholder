@@ -1,12 +1,5 @@
 @import 'ui-kit/styles';
 
-.ui-textarea-wrapper {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    max-width: inherit;
-}
-
 .ui-textarea {
     border-radius: 5px;
     border: 1px solid $color-input-border;
@@ -18,8 +11,6 @@
     outline: none;
     padding: 5px 10px;
     transition: background-color 0.2s;
-   max-width: inherit;
-
 
     &::placeholder {
         color: #BFBFBF;
