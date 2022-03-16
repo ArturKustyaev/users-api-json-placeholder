@@ -1,24 +1,27 @@
-import { userApi } from 'api/userApi'
-import { AxiosResponse } from 'axios'
 import { IUser, UserItem } from 'components'
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { Loader } from 'ui-kit'
 import './UserList.scss'
 
-export const UserList: FC = (): JSX.Element => {
-	const [users, setUsers] = useState<Array<IUser>>([])
+export interface IUserListProps {
+	users: Array<IUser>
+}
 
-	useEffect(() => {
-		userApi.fetchUsers().then((response: AxiosResponse<Array<IUser>>) => {
-			setUsers(response.data)
-		})
-	}, [])
-
+export const UserList: FC<IUserListProps> = ({ users }): JSX.Element => {
 	return (
 		<div className='user-list'>
 			<h2 className='user-list__title'>Список пользователей</h2>
 			{users.length ? (
-				users.map(user => <UserItem className={'user-list__user'} key={user.id} user={user} />)
+				<>
+					<ul className='user-list__list'>
+						{users.map(user => (
+							<li className='user-list__item' key={user.id}>
+								<UserItem user={user} />
+							</li>
+						))}
+					</ul>
+					<div className='user-list__users-count'>Найдено {users.length} пользователей</div>
+				</>
 			) : (
 				<Loader />
 			)}

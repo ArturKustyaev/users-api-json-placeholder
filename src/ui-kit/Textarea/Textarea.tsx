@@ -1,29 +1,31 @@
 import classNames from 'classnames'
-import { FC, InputHTMLAttributes, ReactNode } from 'react'
+import { ForwardedRef, forwardRef, TextareaHTMLAttributes } from 'react'
 import './Textarea.scss'
 
-interface ITextareaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+interface ITextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
 	className?: string
+	name?: string
 	disabled?: boolean
-	label?: string
-	labelClassName?: string
+	error?: string
 }
 
-export const Textarea: FC<ITextareaProps> = ({
-	className,
-	disabled,
-	label,
-	labelClassName,
-	...rest
-}): JSX.Element => {
-	const classes = classNames('ui-textarea', className, {
-		'ui-textarea--disabled': disabled
-	})
+export const Textarea = forwardRef(
+	(
+		{ className, name, error, disabled, ...rest }: ITextareaProps,
+		ref: ForwardedRef<HTMLTextAreaElement>
+	): JSX.Element => {
+		const classes = classNames('ui-textarea', className, {
+			'ui-textarea--error': error
+		})
 
-	return (
-		<>
-			{label && <label className={classNames('ui-textarea__label', labelClassName)}>{label}</label>}
-			<textarea className={classes} disabled={disabled} {...rest} />
-		</>
-	)
-}
+		return (
+			<textarea
+				className={classes}
+				name={name}
+				ref={ref}
+				disabled={disabled}
+				{...rest}
+			/>
+		)
+	}
+)

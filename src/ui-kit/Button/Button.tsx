@@ -1,14 +1,13 @@
 import classNames from 'classnames'
-import { ButtonHTMLAttributes, FC, MouseEvent } from 'react'
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react'
 import './Button.scss'
 
-type ButtonVariantType = 'primary' | 'success'
+export type ButtonVariantType = 'primary' | 'success'
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	variant?: ButtonVariantType
-	disabled?: boolean
-	onClick?: (e: MouseEvent) => void
+	children?: ReactNode
 }
 
 export const Button: FC<IButtonProps> = ({
@@ -16,7 +15,6 @@ export const Button: FC<IButtonProps> = ({
 	children,
 	variant = 'primary',
 	disabled,
-	onClick,
 	...rest
 }): JSX.Element => {
 	const classes = classNames('ui-button', className, {
@@ -24,7 +22,7 @@ export const Button: FC<IButtonProps> = ({
 		'ui-button--success': variant === 'success'
 	})
 	return (
-		<button className={classes} disabled={disabled} onClick={onClick} {...rest}>
+		<button className={classes} disabled={disabled} {...rest}>
 			{children}
 		</button>
 	)

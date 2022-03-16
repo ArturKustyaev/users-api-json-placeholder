@@ -1,31 +1,37 @@
 import classNames from 'classnames'
-import { FC, FocusEvent } from 'react'
+import { FocusEvent } from 'react'
+import { Path, UseFormRegister } from 'react-hook-form'
 import { Input } from 'ui-kit'
+import Textarea from 'ui-kit/Textarea'
 import './FormField.scss'
 
-export interface IFormFieldProps {
+export type FormFieldType = 'text' | 'textarea'
+
+export interface IFormFieldProps<T> {
 	className?: string
+	name: Path<T>
+	label: string
+	type?: FormFieldType
 	error?: string
-	label?: string
-	name?: string
-	register?: (ref: any) => void
-	isDisabled: boolean
+	isDisabled?: boolean
 	isFocused?: boolean
-	onBlur?: (event: FocusEvent<HTMLInputElement>) => void
-	onFocus?: (event: FocusEvent<HTMLInputElement>) => void
+	register?: UseFormRegister<T>
+	onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+	onBlur?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
-export const FormField: FC<IFormFieldProps> = ({
+export const FormField = <T,>({
 	className,
-	label,
 	name,
-	register,
+	label,
+	type = 'text',
 	error,
 	isDisabled,
 	isFocused,
-	onBlur,
-	onFocus
-}) => {
+	register,
+	onFocus,
+	onBlur
+}: IFormFieldProps<T>): JSX.Element => {
 	return (
 		<div
 			className={classNames('ui-form-field', className, {
@@ -36,17 +42,33 @@ export const FormField: FC<IFormFieldProps> = ({
 				{label}
 			</label>
 
-			<>
-				<Input
-					error={error}
-					name={name}
-					{...(register ? register(name) : register)}
-					disabled={isDisabled}
-					onFocus={onFocus}
-					onBlur={onBlur}
-				/>
-				{error && <div className='ui-form-field__error-message'>{error}</div>}
-			</>
+			{type === 'text' && (
+				<>
+					<Input
+						name={name}
+						type={type}
+						error={error}
+						{...(register ? register(name) : register)}
+						disabled={isDisabled}
+						onFocus={onFocus}
+						onBlur={onBlur}
+					/>
+					{error && <div className='ui-form-field__error-message'>{error}</div>}
+				</>
+			)}
+			{type === 'textarea' && (
+				<>
+					<Textarea
+						name={name}
+						error={error}
+						{...(register ? register(name) : register)}
+						disabled={isDisabled}
+						onFocus={onFocus}
+						onBlur={onBlur}
+					/>
+					{error && <div className='ui-form-field__error-message'>{error}</div>}
+				</>
+			)}
 		</div>
 	)
 }

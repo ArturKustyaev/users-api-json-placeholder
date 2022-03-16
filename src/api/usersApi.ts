@@ -6,8 +6,12 @@ const instance = axios.create({
 })
 
 export const userApi = {
-	fetchUsers: (): Promise<AxiosResponse> => {
-		return instance.get('/users')
+	fetchUsers: (sort: string | null): Promise<AxiosResponse> => {
+		return instance.get('/users', {
+			params: {
+				_sort: sort
+			}
+		})
 	},
 	fetchUserById: (id: string): Promise<AxiosResponse> => {
 		return instance.get(`/users/${id}`)

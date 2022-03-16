@@ -5,6 +5,6 @@ import UserItem from './UserItem'
 import UserList from './UserList'
 import UserProfile from './UserProfile'
 
-export type IUser = import('./UserItem/Types').IUser
+export type IUser = import('./UserItem/types').IUser
 
 export { App, Sidebar, UserForm, UserItem, UserList, UserProfile }
