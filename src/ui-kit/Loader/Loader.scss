@@ -1,0 +1,32 @@
+@import 'ui-kit/styles';
+
+.ui-loader {
+    display: inline-block;
+
+    &-wrapper {
+        width: 100%;
+        text-align: center;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid;
+        border-color: $color-primary transparent $color-primary transparent;
+        animation: ui-loader-spin 1.2s linear infinite;
+    }
+
+    @keyframes ui-loader-spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { FC, MouseEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Button } from 'ui-kit'
+import { Button, Loader } from 'ui-kit'
 import './Sidebar.scss'
 
 export const Sidebar: FC = (): JSX.Element => {
